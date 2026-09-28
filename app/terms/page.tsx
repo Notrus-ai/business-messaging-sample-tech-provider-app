@@ -6,6 +6,8 @@
 import Link from 'next/link';
 import {redirect} from 'next/navigation';
 
+import BilingualDocument from '@/app/components/BilingualDocument';
+
 function isHttpUrl(value: string | undefined): value is string {
   if (!value) {
     return false;
@@ -30,12 +32,23 @@ export default function TermsPage() {
   }
 
   const termsHtml = process.env.TERMS_HTML?.trim();
-  if (termsHtml && termsHtml.toLowerCase() !== 'none') {
+  const hasHtml = termsHtml && termsHtml.toLowerCase() !== 'none';
+
+  // Optional English translation. Only offers the PT-BR/EN toggle when both
+  // are set, so a single-language setup keeps behaving exactly as before.
+  const termsHtmlEn = process.env.TERMS_HTML_EN?.trim();
+  const hasHtmlEn = termsHtmlEn && termsHtmlEn.toLowerCase() !== 'none';
+
+  if (hasHtml && hasHtmlEn) {
+    return <BilingualDocument htmlPt={termsHtml} htmlEn={termsHtmlEn} />;
+  }
+
+  if (hasHtml || hasHtmlEn) {
     return (
       <main className="min-h-screen bg-white px-4 py-10">
         <div
           className="max-w-3xl mx-auto prose prose-slate"
-          dangerouslySetInnerHTML={{__html: termsHtml}}
+          dangerouslySetInnerHTML={{__html: (hasHtml ? termsHtml : termsHtmlEn) as string}}
         />
       </main>
     );
