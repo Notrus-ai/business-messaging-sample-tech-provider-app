@@ -7,6 +7,7 @@ import Link from 'next/link';
 import {redirect} from 'next/navigation';
 
 import BilingualDocument from '@/app/components/BilingualDocument';
+import {decodeInlineDocument} from '@/lib/inlineDocument';
 
 function isHttpUrl(value: string | undefined): value is string {
   if (!value) {
@@ -33,24 +34,16 @@ export default function PrivacyPage() {
   // Vercel requires every env var listed by the deploy button to have a value,
   // so treat the documented "None" sentinel as unset.
   const privacyPolicyHtml = process.env.PRIVACY_POLICY_HTML?.trim();
-  const hasHtml = privacyPolicyHtml && privacyPolicyHtml.toLowerCase() !== 'none';
-
-  // Optional English translation. Only offers the PT-BR/EN toggle when both
-  // are set, so a single-language setup keeps behaving exactly as before.
-  const privacyPolicyHtmlEn = process.env.PRIVACY_POLICY_HTML_EN?.trim();
-  const hasHtmlEn = privacyPolicyHtmlEn && privacyPolicyHtmlEn.toLowerCase() !== 'none';
-
-  if (hasHtml && hasHtmlEn) {
-    return <BilingualDocument htmlPt={privacyPolicyHtml} htmlEn={privacyPolicyHtmlEn} />;
-  }
-
-  if (hasHtml || hasHtmlEn) {
+  if (privacyPolicyHtml && privacyPolicyHtml.toLowerCase() !== 'none') {
+    // Value is either plain HTML or a gzip+base64 blob (see lib/inlineDocument),
+    // optionally holding a PT-BR/EN pair — see that module for why.
+    const {pt, en} = decodeInlineDocument(privacyPolicyHtml);
+    if (en) {
+      return <BilingualDocument htmlPt={pt} htmlEn={en} />;
+    }
     return (
       <main className="min-h-screen bg-white px-4 py-10">
-        <div
-          className="max-w-3xl mx-auto prose prose-slate"
-          dangerouslySetInnerHTML={{__html: (hasHtml ? privacyPolicyHtml : privacyPolicyHtmlEn) as string}}
-        />
+        <div className="max-w-3xl mx-auto prose prose-slate" dangerouslySetInnerHTML={{__html: pt}} />
       </main>
     );
   }

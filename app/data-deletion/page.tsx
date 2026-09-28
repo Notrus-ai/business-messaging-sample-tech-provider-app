@@ -7,6 +7,7 @@ import Link from 'next/link';
 import {redirect} from 'next/navigation';
 
 import BilingualDocument from '@/app/components/BilingualDocument';
+import {decodeInlineDocument} from '@/lib/inlineDocument';
 
 function isHttpUrl(value: string | undefined): value is string {
   if (!value) {
@@ -32,24 +33,16 @@ export default function DataDeletionPage() {
   }
 
   const dataDeletionHtml = process.env.DATA_DELETION_HTML?.trim();
-  const hasHtml = dataDeletionHtml && dataDeletionHtml.toLowerCase() !== 'none';
-
-  // Optional English translation. Only offers the PT-BR/EN toggle when both
-  // are set, so a single-language setup keeps behaving exactly as before.
-  const dataDeletionHtmlEn = process.env.DATA_DELETION_HTML_EN?.trim();
-  const hasHtmlEn = dataDeletionHtmlEn && dataDeletionHtmlEn.toLowerCase() !== 'none';
-
-  if (hasHtml && hasHtmlEn) {
-    return <BilingualDocument htmlPt={dataDeletionHtml} htmlEn={dataDeletionHtmlEn} />;
-  }
-
-  if (hasHtml || hasHtmlEn) {
+  if (dataDeletionHtml && dataDeletionHtml.toLowerCase() !== 'none') {
+    // Value is either plain HTML or a gzip+base64 blob (see lib/inlineDocument),
+    // optionally holding a PT-BR/EN pair — see that module for why.
+    const {pt, en} = decodeInlineDocument(dataDeletionHtml);
+    if (en) {
+      return <BilingualDocument htmlPt={pt} htmlEn={en} />;
+    }
     return (
       <main className="min-h-screen bg-white px-4 py-10">
-        <div
-          className="max-w-3xl mx-auto prose prose-slate"
-          dangerouslySetInnerHTML={{__html: (hasHtml ? dataDeletionHtml : dataDeletionHtmlEn) as string}}
-        />
+        <div className="max-w-3xl mx-auto prose prose-slate" dangerouslySetInnerHTML={{__html: pt}} />
       </main>
     );
   }
