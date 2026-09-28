@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Termos de Serviço — Notrus</title>
+<meta name="description" content="Termos de Serviço da Notrus: condições de uso da plataforma de atendimento com agentes de inteligência artificial, obrigações das partes, propriedade intelectual, responsabilidade e rescisão.">
+<!-- Meta exige que a URL dos Termos seja pública, acessível aos crawlers e não geobloqueada. -->
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Termos de Serviço — Notrus">
+<meta property="og:description" content="Condições de uso da plataforma Notrus de atendimento com agentes de IA.">
+<meta property="og:url" content="https://www.notrus.ai/termos-de-servico">
+<link rel="canonical" href="https://www.notrus.ai/termos-de-servico">
+<!--
+  ============================================================================
+  RASCUNHO — NÃO PUBLICAR SEM REVISÃO JURÍDICA.
+  Gerado em 25/09/2026 com base na arquitetura real da plataforma Notrus e na
+  Política de Privacidade vigente (docs/politica-privacidade.html).
+
+  Cláusulas que EXIGEM decisão/validação de advogado antes de ir ao ar:
+    - 5   Planos, preços e faturamento (reajuste, inadimplência, multa)
+    - 13  Disponibilidade e suporte (o SLA de 99,5% é placeholder)
+    - 14  Suspensão e rescisão (prazos de aviso prévio e multa rescisória)
+    - 15  Limitação de responsabilidade (teto de 12 meses é praxe, não regra)
+    - 19  Lei aplicável e foro (foro de eleição depende da sede)
+  Placeholders visíveis estão marcados com class="fill" — todos devem ser
+  preenchidos antes da publicação.
+  ============================================================================
+-->
+<style>
+  :root{
+    --bg:#ffffff;
+    --surface:#f6f7f9;
+    --text:#14161a;
+    --muted:#5b6470;
+    --line:#e3e6ea;
+    --brand:#1f4fd8;
+    --brand-soft:#eef2ff;
+    --radius:12px;
+    --maxw:820px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0f1115; --surface:#161a21; --text:#eef1f5; --muted:#a2acba;
+      --line:#262c36; --brand:#7ea2ff; --brand-soft:#1a2540;
+    }
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:17px; line-height:1.65;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:32px 20px 96px}
+  header.page{border-bottom:1px solid var(--line); padding-bottom:24px; margin-bottom:8px}
+  .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:-.01em; font-size:1.05rem}
+  .brand .dot{width:12px;height:12px;border-radius:50%;background:var(--brand);display:inline-block}
+  h1{font-size:2rem; line-height:1.2; letter-spacing:-.02em; margin:24px 0 8px}
+  h2{font-size:1.25rem; line-height:1.3; letter-spacing:-.01em; margin:40px 0 10px; padding-top:8px}
+  h3{font-size:1.02rem; margin:24px 0 6px}
+  p,ul,ol,table{margin:0 0 14px}
+  ul,ol{padding-left:22px}
+  li{margin:6px 0}
+  a{color:var(--brand); text-decoration:underline; text-underline-offset:2px}
+  .meta{color:var(--muted); font-size:.92rem; margin:0}
+  .lead{font-size:1.06rem}
+  .card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:18px 20px; margin:20px 0}
+  .card.accent{background:var(--brand-soft); border-color:transparent}
+  .toc{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:18px 20px; margin:28px 0}
+  .toc strong{display:block; margin-bottom:8px; font-size:.95rem}
+  .toc ol{margin:0; padding-left:20px; font-size:.95rem}
+  .table-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch; border:1px solid var(--line); border-radius:var(--radius); margin:16px 0}
+  table{border-collapse:collapse; width:100%; min-width:560px; margin:0; font-size:.94rem}
+  th,td{text-align:left; vertical-align:top; padding:10px 14px; border-bottom:1px solid var(--line)}
+  th{background:var(--surface); font-weight:650}
+  tr:last-child td{border-bottom:none}
+  code{background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:1px 5px; font-size:.9em}
+  footer.page{margin-top:56px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:.9rem}
+  .fill{color:#b3261e; font-weight:600}
+  @media (prefers-color-scheme: dark){ .fill{color:#ffb4ab} }
+  img{max-width:100%; height:auto}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="page">
+    <div class="brand"><span class="dot" aria-hidden="true"></span> Notrus</div>
+  </header>
+
+  <h1>Termos de Serviço</h1>
+  <p class="meta">Última atualização: <strong>25 de setembro de 2026</strong> &middot; Versão 1.0</p>
+
+  <p class="lead">Estes Termos de Serviço regem o acesso e o uso da plataforma <strong>Notrus</strong>
+  de atendimento ao cliente com agentes de inteligência artificial. Ao contratar, acessar ou usar a
+  plataforma, você declara ter lido, compreendido e aceito integralmente estas condições.</p>
+
+  <div class="card">
+    <p style="margin:0"><strong>Quem somos.</strong>
+    <span class="fill">[RAZÃO SOCIAL COMPLETA]</span>, inscrita no CNPJ sob nº
+    <span class="fill">[00.000.000/0000-00]</span>, com sede em
+    <span class="fill">[endereço completo, cidade/UF, Brasil]</span>, operando sob a marca
+    <strong>Notrus</strong> (“Notrus”, “nós”).</p>
+    <p style="margin:8px 0 0"><strong>Contato:</strong>
+    <a href="mailto:contato@notrus.ai">contato@notrus.ai</a></p>
+  </div>
+
+  <nav class="toc" aria-label="Índice">
+    <strong>Índice</strong>
+    <ol>
+      <li><a href="#objeto">Objeto e aceitação</a></li>
+      <li><a href="#definicoes">Definições</a></li>
+      <li><a href="#servico">O que a plataforma faz</a></li>
+      <li><a href="#conta">Cadastro, conta e acesso</a></li>
+      <li><a href="#planos">Planos, preços e faturamento</a></li>
+      <li><a href="#obrigacoes">Obrigações do Cliente</a></li>
+      <li><a href="#uso-aceitavel">Uso aceitável e condutas vedadas</a></li>
+      <li><a href="#meta">Conformidade com WhatsApp e plataformas da Meta</a></li>
+      <li><a href="#ia">Inteligência artificial: natureza e limites</a></li>
+      <li><a href="#dados">Proteção de dados pessoais</a></li>
+      <li><a href="#confidencialidade">Confidencialidade</a></li>
+      <li><a href="#pi">Propriedade intelectual</a></li>
+      <li><a href="#sla">Disponibilidade e suporte</a></li>
+      <li><a href="#rescisao">Suspensão e rescisão</a></li>
+      <li><a href="#responsabilidade">Limitação de responsabilidade</a></li>
+      <li><a href="#garantias">Garantias e isenções</a></li>
+      <li><a href="#alteracoes">Alterações destes Termos</a></li>
+      <li><a href="#geral">Disposições gerais</a></li>
+      <li><a href="#foro">Lei aplicável e foro</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="objeto">1. Objeto e aceitação</h2>
+  <p>Estes Termos regulam a prestação, pela Notrus, de serviço de software como serviço (SaaS) para
+  atendimento ao cliente com agentes de inteligência artificial, acessado por meio de painel web e
+  de interfaces de programação (APIs).</p>
+  <p>A aceitação ocorre pelo primeiro dos eventos: (i) assinatura de proposta comercial, contrato ou
+  ordem de serviço que faça referência a estes Termos; (ii) criação de conta na plataforma; ou
+  (iii) qualquer uso do serviço. Havendo contrato específico assinado entre as partes, ele prevalece
+  sobre estes Termos no que for conflitante.</p>
+  <p>A plataforma é destinada exclusivamente a <strong>uso profissional por pessoas jurídicas</strong>
+  e por pessoas físicas maiores de 18 anos no exercício de atividade empresarial. Não é destinada a
+  consumidores pessoa física para uso pessoal.</p>
+
+  <h2 id="definicoes">2. Definições</h2>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>Termo</th><th>Significado</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Cliente</strong></td><td>pessoa jurídica que contrata a plataforma.</td></tr>
+        <tr><td><strong>Usuário</strong></td><td>pessoa autorizada pelo Cliente a acessar o painel ou as APIs.</td></tr>
+        <tr><td><strong>Cliente Final</strong></td><td>pessoa que se comunica com o Cliente pelos canais conectados à plataforma.</td></tr>
+        <tr><td><strong>Tenant</strong></td><td>ambiente lógico isolado do Cliente dentro da plataforma.</td></tr>
+        <tr><td><strong>Dados do Cliente</strong></td><td>conteúdo de conversas, cadastros, bases de conhecimento e demais dados inseridos ou gerados no Tenant.</td></tr>
+        <tr><td><strong>Agente</strong></td><td>componente automatizado que lê, classifica e responde mensagens usando modelos de linguagem.</td></tr>
+        <tr><td><strong>Canais</strong></td><td>meios de comunicação conectados, principalmente a WhatsApp Business Platform.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="servico">3. O que a plataforma faz</h2>
+  <p>A Notrus disponibiliza ao Cliente, conforme o plano contratado:</p>
+  <ul>
+    <li>conexão de canais de atendimento, com destaque para a <strong>WhatsApp Business Platform</strong>;</li>
+    <li>recebimento, enfileiramento e roteamento de mensagens, com isolamento lógico por Tenant;</li>
+    <li>agentes de IA que classificam o motivo de contato, consultam a base de conhecimento do Cliente e geram respostas;</li>
+    <li>transferência para atendimento humano, quando configurada pelo Cliente;</li>
+    <li>painel de operação, histórico de conversas, relatórios e análises;</li>
+    <li>APIs e webhooks para integração com os sistemas do Cliente.</li>
+  </ul>
+  <p>A Notrus pode evoluir, modificar ou descontinuar funcionalidades. Descontinuações relevantes
+  serão comunicadas com antecedência mínima de <span class="fill">[30/60/90]</span> dias, salvo quando
+  decorrerem de exigência legal, de segurança ou de terceiro fornecedor.</p>
+
+  <h2 id="conta">4. Cadastro, conta e acesso</h2>
+  <ul>
+    <li>O Cliente é responsável pela veracidade dos dados cadastrais e por mantê-los atualizados.</li>
+    <li>As credenciais são pessoais e intransferíveis. O Cliente responde por todos os atos praticados com as credenciais dos seus Usuários.</li>
+    <li>O Cliente deve comunicar imediatamente qualquer uso não autorizado ou suspeita de comprometimento de credenciais.</li>
+    <li>O Cliente é responsável por conceder, revisar e revogar os acessos dos seus Usuários, inclusive no desligamento de colaboradores.</li>
+    <li>A Notrus pode exigir autenticação em dois fatores e outras medidas de segurança proporcionais ao risco.</li>
+  </ul>
+
+  <h2 id="planos">5. Planos, preços e faturamento</h2>
+  <p>Os valores, a forma de cobrança, os limites de uso e a vigência são os definidos na proposta
+  comercial ou no plano contratado. Salvo disposição diversa:</p>
+  <ul>
+    <li>a cobrança é <strong>mensal</strong>, na modalidade <span class="fill">[pré-paga/pós-paga]</span>, com vencimento em <span class="fill">[dia]</span>;</li>
+    <li>consumo excedente aos limites do plano é cobrado conforme a tabela vigente;</li>
+    <li>tributos incidentes são de responsabilidade de quem a legislação determinar;</li>
+    <li>valores são reajustados anualmente pelo <span class="fill">[IPCA/IGP-M]</span>, ou por índice que o substitua;</li>
+    <li>o atraso no pagamento sujeita o Cliente a multa de <span class="fill">[2]</span>% e juros de <span class="fill">[1]</span>% ao mês, <em>pro rata die</em>;</li>
+    <li>atraso superior a <span class="fill">[15/30]</span> dias autoriza a suspensão do acesso, mediante aviso prévio.</li>
+  </ul>
+  <p><strong>Custos de terceiros.</strong> Tarifas cobradas pela Meta pelo envio de mensagens no
+  WhatsApp e por outros provedores de canal são de responsabilidade do Cliente, sendo repassadas ou
+  faturadas diretamente pelo respectivo fornecedor, conforme o modelo contratado.</p>
+
+  <h2 id="obrigacoes">6. Obrigações do Cliente</h2>
+  <p>O Cliente se obriga a:</p>
+  <ul>
+    <li>utilizar a plataforma conforme a legislação aplicável, estes Termos e as políticas dos Canais conectados;</li>
+    <li><strong>obter e manter base legal válida</strong> para o tratamento dos dados dos seus Clientes Finais, incluindo o consentimento e o <em>opt-in</em> exigidos pelas políticas do WhatsApp para mensagens ativas;</li>
+    <li>manter atualizados os avisos de privacidade prestados aos seus Clientes Finais, informando o uso de atendimento automatizado;</li>
+    <li>responder, como Controlador, às solicitações de titulares relativas aos dados de atendimento, com o apoio operacional da Notrus;</li>
+    <li>revisar o conteúdo da sua base de conhecimento e as configurações dos Agentes, respondendo pelo que instrui o Agente a dizer;</li>
+    <li>não inserir na plataforma dados pessoais sensíveis além do estritamente necessário, nem dados de crianças e adolescentes;</li>
+    <li>manter ambiente e credenciais seguros no seu lado da integração.</li>
+  </ul>
+
+  <h2 id="uso-aceitavel">7. Uso aceitável e condutas vedadas</h2>
+  <p>É vedado ao Cliente e aos seus Usuários:</p>
+  <ul>
+    <li>enviar <em>spam</em>, mensagens não solicitadas em massa ou comunicações sem <em>opt-in</em> válido;</li>
+    <li>utilizar a plataforma para fraude, golpe, <em>phishing</em>, disseminação de desinformação ou qualquer atividade ilícita;</li>
+    <li>transmitir conteúdo que viole direitos de terceiros, seja discriminatório, violento ou sexualmente explícito;</li>
+    <li>realizar engenharia reversa, descompilar ou tentar extrair o código-fonte, modelos ou <em>prompts</em> da plataforma;</li>
+    <li>usar a plataforma para treinar modelos concorrentes ou para <em>benchmarking</em> não autorizado com fins de publicação;</li>
+    <li>contornar limites técnicos, cotas, isolamento entre Tenants ou controles de segurança;</li>
+    <li>realizar testes de carga, varredura ou teste de intrusão sem autorização prévia e por escrito;</li>
+    <li>revender, sublicenciar ou disponibilizar a plataforma a terceiros fora do escopo contratado.</li>
+  </ul>
+  <p>A violação desta cláusula autoriza a suspensão imediata do acesso, sem prejuízo das demais
+  medidas cabíveis.</p>
+
+  <h2 id="meta">8. Conformidade com WhatsApp e plataformas da Meta</h2>
+  <p>A integração com a WhatsApp Business Platform está sujeita às regras da Meta, que prevalecem
+  sobre qualquer configuração da plataforma. O Cliente reconhece e concorda que:</p>
+  <ul>
+    <li>deve cumprir os
+      <a href="https://developers.facebook.com/terms" rel="noopener" target="_blank">Termos da Plataforma Meta</a>,
+      as Políticas do Desenvolvedor, a
+      <a href="https://www.whatsapp.com/legal/business-policy" rel="noopener" target="_blank">Política Comercial do WhatsApp</a>
+      e a Política de Comércio aplicáveis;</li>
+    <li>a Meta pode, a seu exclusivo critério, limitar, suspender ou encerrar o acesso de uma conta,
+      número de telefone ou modelo de mensagem, e a Notrus não tem ingerência nessas decisões;</li>
+    <li>a aprovação de modelos de mensagem, a qualidade do número e os limites de envio são
+      determinados pela Meta e podem variar sem aviso;</li>
+    <li>a Notrus atua como provedora de tecnologia e acessa apenas os dados autorizados pelo Cliente
+      no momento da conexão da conta e nos escopos de permissão concedidos;</li>
+    <li>a revogação, pelo Cliente, das permissões concedidas ao aplicativo da Notrus interrompe a
+      prestação do serviço nos Canais afetados.</li>
+  </ul>
+  <p>Penalidades aplicadas pela Meta em razão de conduta do Cliente não configuram falha da Notrus
+  nem ensejam reembolso.</p>
+
+  <h2 id="ia">9. Inteligência artificial: natureza e limites</h2>
+  <p>Os Agentes são construídos sobre modelos de linguagem de terceiros contratados pela Notrus.
+  O Cliente reconhece que:</p>
+  <ul>
+    <li>respostas geradas por IA são <strong>probabilísticas</strong> e podem conter erros, imprecisões ou informações desatualizadas;</li>
+    <li>a plataforma <strong>não substitui aconselhamento profissional</strong> jurídico, médico, financeiro ou contábil, e não deve ser usada para decisões que exijam tal aconselhamento sem revisão humana;</li>
+    <li>cabe ao Cliente configurar revisão humana, limites de escopo e mecanismos de escalonamento proporcionais ao risco da sua operação;</li>
+    <li>a Notrus não garante que uma resposta específica será gerada, nem que determinado conteúdo será sempre evitado;</li>
+    <li>o conteúdo enviado aos provedores de modelos é limitado ao necessário e contratado em regime corporativo, no qual <strong>não é utilizado para treinar modelos de uso geral</strong>;</li>
+    <li>a Notrus não treina modelos próprios com dados de um Cliente para uso em outro Cliente.</li>
+  </ul>
+  <p>Quando uma decisão automatizada afetar interesses de um Cliente Final, aplica-se o direito à
+  revisão previsto na <a href="politica-privacidade.html">Política de Privacidade</a>.</p>
+
+  <h2 id="dados">10. Proteção de dados pessoais</h2>
+  <p>O tratamento de dados pessoais é regido pela
+  <a href="politica-privacidade.html">Política de Privacidade</a>, que integra estes Termos, e pela
+  legislação aplicável — em especial a <strong>LGPD (Lei nº 13.709/2018)</strong> e, quando cabível,
+  o GDPR.</p>
+  <ul>
+    <li>Quanto ao conteúdo das conversas e aos dados dos Clientes Finais, o <strong>Cliente é
+      Controlador</strong> e a <strong>Notrus é Operadora</strong>, tratando os dados exclusivamente
+      conforme as instruções documentadas do Cliente.</li>
+    <li>Quanto aos dados de cadastro, de Usuários do painel e de navegação, a <strong>Notrus é
+      Controladora</strong>.</li>
+    <li>A Notrus mantém medidas técnicas e administrativas de segurança proporcionais ao risco,
+      incluindo criptografia em trânsito e em repouso, controle de acesso por perfil, isolamento
+      lógico por Tenant e registro de auditoria.</li>
+    <li>Subprocessadores são contratados sob obrigações equivalentes; a lista atualizada pode ser
+      solicitada em <a href="mailto:privacidade@notrus.ai">privacidade@notrus.ai</a>.</li>
+    <li>Incidentes de segurança com risco relevante serão comunicados ao Cliente sem demora
+      injustificada, com as informações necessárias ao cumprimento dos seus deveres legais.</li>
+    <li>Pedidos de exclusão seguem o procedimento da página
+      <a href="exclusao-de-dados.html">Exclusão de Dados</a>.</li>
+  </ul>
+  <p>As partes poderão firmar Acordo de Tratamento de Dados (DPA) específico, que prevalecerá sobre
+  esta cláusula no que for mais protetivo ao titular.</p>
+
+  <h2 id="confidencialidade">11. Confidencialidade</h2>
+  <p>Cada parte se obriga a manter sigilo sobre as informações confidenciais da outra a que tiver
+  acesso, usando-as somente para a execução do contrato, e a protegê-las com o mesmo grau de cuidado
+  que dispensa às próprias — nunca inferior ao razoável. A obrigação subsiste por
+  <span class="fill">[5]</span> anos após o término da relação e não se aplica a informações que
+  sejam ou se tornem públicas sem violação, já sejam conhecidas licitamente, sejam desenvolvidas de
+  forma independente ou cuja divulgação seja exigida por lei ou autoridade — hipótese em que a parte
+  notificará a outra previamente, quando permitido.</p>
+
+  <h2 id="pi">12. Propriedade intelectual</h2>
+  <ul>
+    <li>A plataforma, o software, a marca Notrus, a documentação, os modelos de <em>prompt</em> e toda
+      a tecnologia subjacente são de titularidade exclusiva da Notrus. Estes Termos concedem ao
+      Cliente <strong>licença de uso limitada, não exclusiva, intransferível e revogável</strong>,
+      restrita à vigência do contrato.</li>
+    <li>Os <strong>Dados do Cliente permanecem de titularidade do Cliente</strong>. O Cliente concede
+      à Notrus licença limitada para hospedar, processar e exibir esses dados exclusivamente para
+      prestar o serviço contratado.</li>
+    <li>As respostas geradas pelos Agentes a partir dos Dados do Cliente pertencem ao Cliente, na
+      medida em que sejam protegíveis.</li>
+    <li>A Notrus pode usar <strong>dados agregados e anonimizados</strong>, que não permitam
+      identificar o Cliente nem qualquer titular, para operar, medir e aprimorar o serviço.</li>
+    <li>Sugestões e <em>feedback</em> enviados pelo Cliente podem ser livremente utilizados pela
+      Notrus, sem contrapartida.</li>
+    <li>O uso da marca de qualquer das partes em material de divulgação depende de autorização
+      prévia e por escrito.</li>
+  </ul>
+
+  <h2 id="sla">13. Disponibilidade e suporte</h2>
+  <p>A Notrus envidará esforços comercialmente razoáveis para manter a plataforma disponível em
+  <span class="fill">[99,5]</span>% do tempo, apurado mensalmente, excluídas:</p>
+  <ul>
+    <li>janelas de manutenção programada, comunicadas com antecedência mínima de <span class="fill">[48]</span> horas;</li>
+    <li>indisponibilidade de provedores de terceiros, incluindo Meta/WhatsApp, provedores de nuvem e provedores de modelos de IA;</li>
+    <li>falhas na infraestrutura, na rede ou nas integrações sob responsabilidade do Cliente;</li>
+    <li>eventos de força maior ou caso fortuito.</li>
+  </ul>
+  <p>Canais e prazos de suporte seguem o plano contratado. Suporte padrão:
+  <a href="mailto:suporte@notrus.ai">suporte@notrus.ai</a>, em dias úteis, das
+  <span class="fill">[9h às 18h]</span> (horário de Brasília).</p>
+
+  <h2 id="rescisao">14. Suspensão e rescisão</h2>
+  <h3>14.1 Suspensão</h3>
+  <p>A Notrus pode suspender o acesso, total ou parcialmente, mediante aviso — ou imediatamente,
+  quando houver risco iminente — nas hipóteses de: inadimplemento; violação das cláusulas
+  <a href="#uso-aceitavel">7</a> ou <a href="#meta">8</a>; risco à segurança, à integridade ou à
+  disponibilidade da plataforma; ou determinação legal, judicial ou de provedor de Canal.</p>
+  <h3>14.2 Rescisão</h3>
+  <ul>
+    <li>Qualquer parte pode rescindir <strong>imotivadamente</strong> mediante aviso prévio de
+      <span class="fill">[30]</span> dias, respeitados os valores devidos até a data efetiva.</li>
+    <li>A rescisão por <strong>justa causa</strong> é imediata em caso de violação relevante não
+      sanada em <span class="fill">[15]</span> dias do aviso, falência, recuperação judicial ou
+      prática de ato ilícito.</li>
+    <li>Contratos com prazo determinado rescindidos antecipadamente pelo Cliente sujeitam-se à multa
+      de <span class="fill">[percentual]</span>% sobre o valor remanescente.</li>
+  </ul>
+  <h3>14.3 Efeitos</h3>
+  <p>Encerrado o contrato, o acesso é desativado. O Cliente poderá solicitar a
+  <strong>exportação dos Dados do Cliente</strong> em formato estruturado e de uso comum dentro de
+  <span class="fill">[30]</span> dias contados do término. Decorrido esse prazo, os dados serão
+  excluídos ou anonimizados conforme os prazos da
+  <a href="politica-privacidade.html">Política de Privacidade</a>, ressalvadas as retenções exigidas
+  por lei. Subsistem ao término as cláusulas de confidencialidade, propriedade intelectual,
+  limitação de responsabilidade, proteção de dados e foro.</p>
+
+  <h2 id="responsabilidade">15. Limitação de responsabilidade</h2>
+  <p>Na máxima extensão permitida pela legislação aplicável e observado que esta é uma relação
+  <strong>entre empresas</strong>:</p>
+  <ul>
+    <li>a responsabilidade total e acumulada da Notrus, por qualquer causa, fica limitada ao valor
+      efetivamente pago pelo Cliente nos <strong>12 (doze) meses</strong> anteriores ao evento que
+      deu origem à demanda;</li>
+    <li>nenhuma das partes responde por <strong>danos indiretos</strong>, lucros cessantes, perda de
+      receita, perda de oportunidade comercial, perda de dados decorrente de falha do lado da outra
+      parte ou dano reputacional;</li>
+    <li>a Notrus não responde por indisponibilidade, penalidade, limitação de envio ou encerramento
+      de conta impostos pela Meta ou por outro provedor de Canal;</li>
+    <li>a Notrus não responde pelo conteúdo das respostas geradas quando decorrerem da configuração,
+      da base de conhecimento ou das instruções fornecidas pelo Cliente.</li>
+  </ul>
+  <p>Estas limitações <strong>não se aplicam</strong> a dolo, fraude, violação de confidencialidade
+  ou a hipóteses em que a lei vede a limitação.</p>
+  <p>O Cliente se obriga a indenizar a Notrus por perdas decorrentes de demandas de terceiros
+  originadas do uso da plataforma em violação a estes Termos, à legislação ou às políticas dos
+  Canais.</p>
+
+  <h2 id="garantias">16. Garantias e isenções</h2>
+  <p>A plataforma é fornecida <em>“no estado em que se encontra”</em> quanto a características não
+  expressamente previstas nestes Termos ou na proposta comercial. A Notrus não garante que o serviço
+  será ininterrupto, livre de erros, nem que atenderá a resultado específico de negócio. Garantias
+  implícitas de adequação a finalidade específica ficam limitadas ao previsto neste instrumento, na
+  extensão permitida em lei.</p>
+
+  <h2 id="alteracoes">17. Alterações destes Termos</h2>
+  <p>A Notrus pode alterar estes Termos para refletir mudanças no serviço, na legislação ou nas
+  práticas de mercado. Alterações relevantes serão comunicadas com antecedência mínima de
+  <span class="fill">[30]</span> dias, por e-mail ou aviso na plataforma. O uso continuado após a
+  entrada em vigor implica aceitação. Se o Cliente não concordar, poderá rescindir sem multa até a
+  data de vigência da alteração. A data da última atualização fica sempre no topo desta página.</p>
+
+  <h2 id="geral">18. Disposições gerais</h2>
+  <ul>
+    <li><strong>Independência:</strong> estes Termos não criam vínculo societário, trabalhista, de
+      consórcio ou de representação entre as partes.</li>
+    <li><strong>Cessão:</strong> o Cliente não pode ceder o contrato sem anuência prévia da Notrus.
+      A Notrus pode cedê-lo em caso de reorganização societária, fusão ou aquisição, mediante aviso.</li>
+    <li><strong>Subcontratação:</strong> a Notrus pode subcontratar fornecedores, permanecendo
+      responsável perante o Cliente.</li>
+    <li><strong>Tolerância:</strong> a não exigência de qualquer obrigação não implica novação nem
+      renúncia.</li>
+    <li><strong>Autonomia das cláusulas:</strong> a invalidade de uma cláusula não afeta as demais.</li>
+    <li><strong>Comunicações:</strong> serão válidas as enviadas aos e-mails informados no cadastro.</li>
+    <li><strong>Integralidade:</strong> estes Termos, a Política de Privacidade e a proposta comercial
+      constituem o acordo integral entre as partes sobre o objeto.</li>
+  </ul>
+
+  <h2 id="foro">19. Lei aplicável e foro</h2>
+  <p>Estes Termos são regidos pelas leis da <strong>República Federativa do Brasil</strong>. Fica
+  eleito o foro da comarca de <span class="fill">[cidade/UF]</span> para dirimir controvérsias
+  decorrentes deste instrumento, com renúncia a qualquer outro, por mais privilegiado que seja.</p>
+
+  <h2 id="contato">20. Contato</h2>
+  <div class="card">
+    <p style="margin:0">
+      <strong>Comercial e contratual:</strong> <a href="mailto:contato@notrus.ai">contato@notrus.ai</a><br>
+      <strong>Suporte:</strong> <a href="mailto:suporte@notrus.ai">suporte@notrus.ai</a><br>
+      <strong>Privacidade e Encarregado (DPO):</strong> <a href="mailto:privacidade@notrus.ai">privacidade@notrus.ai</a><br>
+      <strong>Endereço:</strong> <span class="fill">[endereço completo, cidade/UF, CEP, Brasil]</span><br>
+      <strong>Razão social:</strong> <span class="fill">[RAZÃO SOCIAL COMPLETA]</span> — CNPJ <span class="fill">[00.000.000/0000-00]</span>
+    </p>
+  </div>
+
+  <footer class="page">
+    <p style="margin:0">© 2026 Notrus. Veja também a
+    <a href="politica-privacidade.html">Política de Privacidade</a> e a página de
+    <a href="exclusao-de-dados.html">Exclusão de Dados</a>.</p>
+  </footer>
+
+</div>
+</body>
+</html>

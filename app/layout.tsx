@@ -30,9 +30,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Sample Tech Provider',
+  title: 'Notrus',
   description:
-    'A sample tech provider that allows for easy instantiation by developers, and easy testing of Meta Business products, onboarding. and APIs',
+    'Notrus — plataforma de atendimento ao cliente com agentes de inteligência artificial, integrada à WhatsApp Business Platform.',
 };
 
 export default function RootLayout({
@@ -61,14 +61,14 @@ export default function RootLayout({
       <body className={`${plusJakartaSans.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         <ErrorBoundary>{children}</ErrorBoundary>
         <footer className="text-center px-4 py-3 text-xs text-gray-500 border-t border-gray-200 mt-6">
-          <span>Copyright &copy; {new Date().getFullYear()} Meta Platforms, Inc. All rights reserved.</span>
+          <span>Copyright &copy; {new Date().getFullYear()} Notrus. Todos os direitos reservados.</span>
           {' · '}
-          <a href="https://opensource.fb.com/legal/terms" target="_blank" rel="noopener noreferrer" className="text-gray-500 underline">
-            Terms of Use
+          <a href="/terms" className="text-gray-500 underline">
+            Termos de Serviço
           </a>
           {' · '}
-          <a href="https://opensource.fb.com/legal/privacy" target="_blank" rel="noopener noreferrer" className="text-gray-500 underline">
-            Privacy Policy
+          <a href="/privacy" className="text-gray-500 underline">
+            Política de Privacidade
           </a>
         </footer>
         <SpeedInsights />
