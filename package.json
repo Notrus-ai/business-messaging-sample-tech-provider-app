@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "4.15.0",
+    "@neondatabase/serverless": "^0.9.3",
     "@types/facebook-js-sdk": "3.3.12",
     "@vercel/analytics": "1.5.0",
     "@vercel/postgres": "0.10.0",
@@ -28,7 +29,8 @@
     "next": "^15.5.16",
     "react": "19.1.2",
     "react-dom": "19.1.2",
-    "tailwind-merge": "^3.5.0"
+    "tailwind-merge": "^3.5.0",
+    "ws": "^8.21.3"
   },
   "devDependencies": {
     "@playwright/test": "^1.59.1",

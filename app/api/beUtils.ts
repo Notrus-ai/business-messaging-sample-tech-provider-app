@@ -5,7 +5,7 @@
 
 'use server';
 
-import { sql } from '@vercel/postgres';
+import { sql } from '@/lib/sql';
 
 import getPrivateConfig from '@/app/privateConfig';
 import publicConfig from '@/app/publicConfig';
@@ -784,6 +784,18 @@ export async function setAckBotStatus(
 //////////////////////////////////////////////////////////
 
 export async function getAppDetails(appId: string): Promise<AppDetails> {
+  if (process.env.BYPASS_AUTH === 'true' && process.env.NODE_ENV === 'development') {
+    const configId = process.env.FB_CONFIG_ID?.trim();
+    return {
+      id: appId || 'local-dev',
+      client_config: {},
+      name: 'Sample Tech Provider',
+      app_domains: ['localhost'],
+      app_type: 'web',
+      config_ids: configId ? [{ id: configId, name: configId }] : [],
+    };
+  }
+
   const privateConfig = await getPrivateConfig();
   console.log('getAppDetails:', 'appId', appId);
   const url = `/${appId}?fields=client_config,name,logo_url,app_domains,app_type,company,link,config_ids`;

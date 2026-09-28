@@ -1,0 +1,55 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: tech_provider
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres -d tech_provider']
+      interval: 3s
+      timeout: 5s
+      retries: 10
+
+  # Required by @vercel/postgres (Neon WebSocket driver) against local Postgres.
+  pg_proxy:
+    image: ghcr.io/neondatabase/wsproxy:latest
+    environment:
+      APPEND_PORT: postgres:5432
+      ALLOW_ADDR_REGEX: '.*'
+    ports:
+      - '5433:80'
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  app:
+    build: .
+    ports:
+      - '3000:3000'
+    env_file:
+      - .env.local
+    environment:
+      NODE_ENV: development
+      APP_BASE_URL: http://localhost:3000
+      FB_APP_ID: '958441073322472'
+      FB_CONFIG_ID: '1746385323240324'
+      POSTGRES_URL: postgresql://postgres:postgres@postgres:5432/tech_provider
+      POSTGRES_WS_PROXY: pg_proxy:80
+    depends_on:
+      postgres:
+        condition: service_healthy
+      pg_proxy:
+        condition: service_started
+    volumes:
+      - .:/app
+      - app_node_modules:/app/node_modules
+
+volumes:
+  postgres_data:
+  app_node_modules:

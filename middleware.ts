@@ -10,6 +10,10 @@ import { auth0 } from '@/lib/auth0';
 export async function middleware(request: NextRequest) {
   // Bypass Auth0 for local development only
   if (process.env.BYPASS_AUTH === 'true' && process.env.NODE_ENV === 'development') {
+    // Auth0 login/logout live in middleware, not as pages. Keep them from 404ing.
+    if (request.nextUrl.pathname.startsWith('/auth/')) {
+      return NextResponse.redirect(new URL('/', request.url));
+    }
     return NextResponse.next();
   }
   return await auth0.middleware(request);
