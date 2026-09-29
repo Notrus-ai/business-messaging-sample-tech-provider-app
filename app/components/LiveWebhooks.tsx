@@ -33,6 +33,31 @@ function formatTimestamp(date: Date): string {
   return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())} ${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
 }
 
+const MAX_STORED_WEBHOOKS = 200;
+
+function storageKey(appId: string): string {
+  return `notrus:webhooks:${appId}`;
+}
+
+function loadStoredWebhooks(appId: string): WebhookEntry[] {
+  try {
+    const raw = localStorage.getItem(storageKey(appId));
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveStoredWebhooks(appId: string, webhooks: WebhookEntry[]) {
+  try {
+    localStorage.setItem(storageKey(appId), JSON.stringify(webhooks.slice(0, MAX_STORED_WEBHOOKS)));
+  } catch {
+    // Storage full or unavailable (e.g. private browsing) — the live view still works, it just won't persist.
+  }
+}
+
 function WebhookRow({ webhook, index }: { webhook: WebhookEntry; index: number }) {
   const [expanded, setExpanded] = useState(index === 0);
   const fieldLabel = webhook.field.charAt(0).toUpperCase() + webhook.field.slice(1);
@@ -95,11 +120,16 @@ export default function LiveWebhooks({ appId }: { appId: string }) {
       status: 200,
       payload: data,
     };
-    setWebhooks((oldState) => [entry, ...oldState]);
+    setWebhooks((oldState) => {
+      const next = [entry, ...oldState].slice(0, MAX_STORED_WEBHOOKS);
+      saveStoredWebhooks(appId, next);
+      return next;
+    });
   }
 
   useEffect(() => {
     setIsMounted(true);
+    setWebhooks(loadStoredWebhooks(appId));
     const ablyClient = new Ably.Realtime({
       authCallback: async (_, callback) => {
         try {
@@ -119,7 +149,8 @@ export default function LiveWebhooks({ appId }: { appId: string }) {
       channel.unsubscribe();
       ablyClient.close();
     };
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- addWebhook reads appId via closure; appId is stable for the page's lifetime
+  }, [appId]);
 
   if (!isMounted) return null;
 

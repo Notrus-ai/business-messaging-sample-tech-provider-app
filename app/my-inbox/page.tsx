@@ -28,7 +28,7 @@ export default async function Home() {
   return (
     <SidebarLayout userId={userId} logoUrl={logoUrl} appName={appName}>
       <div className="h-full flex flex-col">
-        <InboxLayout phones={phones} />
+        <InboxLayout phones={phones} userId={userId} />
       </div>
     </SidebarLayout>
   );

@@ -31,7 +31,53 @@ type ChatMeta = {
 
 type ChannelTab = 'whatsapp' | 'messenger' | 'instagram';
 
-export default function InboxLayout({ phones }: { phones: PhoneDetails[] }) {
+const MAX_STORED_MESSAGES_PER_CHAT = 200;
+
+type StoredInboxState = {
+  allMessages: Record<string, Record<string, Message[]>>;
+  allChats: Record<string, Record<string, ChatMeta>>;
+};
+
+function storageKey(userId: string): string {
+  return `notrus:inbox:${userId}`;
+}
+
+function loadStoredInbox(userId: string): StoredInboxState {
+  try {
+    const raw = localStorage.getItem(storageKey(userId));
+    if (!raw) return { allMessages: {}, allChats: {} };
+    const parsed = JSON.parse(raw);
+    return {
+      allMessages: parsed?.allMessages ?? {},
+      allChats: parsed?.allChats ?? {},
+    };
+  } catch {
+    return { allMessages: {}, allChats: {} };
+  }
+}
+
+function saveStoredInbox(
+  userId: string,
+  allMessages: Record<string, Record<string, Message[]>>,
+  allChats: Record<string, Record<string, ChatMeta>>,
+) {
+  try {
+    // Cap history per chat so a long-lived conversation can't blow past the localStorage quota.
+    const trimmedMessages: Record<string, Record<string, Message[]>> = {};
+    for (const [phoneId, chats] of Object.entries(allMessages)) {
+      trimmedMessages[phoneId] = {};
+      for (const [chatId, messages] of Object.entries(chats)) {
+        trimmedMessages[phoneId][chatId] = messages.slice(-MAX_STORED_MESSAGES_PER_CHAT);
+      }
+    }
+    const state: StoredInboxState = { allMessages: trimmedMessages, allChats };
+    localStorage.setItem(storageKey(userId), JSON.stringify(state));
+  } catch {
+    // Storage full or unavailable (e.g. private browsing) — the live view still works, it just won't persist.
+  }
+}
+
+export default function InboxLayout({ phones, userId }: { phones: PhoneDetails[]; userId: string }) {
   const [selectedPhone, setSelectedPhone] = useState<PhoneDetails | null>(phones[0] ?? null);
   const [selectedChatId, setSelectedChatId] = useState<string | null>(null);
   const [activeChannel, setActiveChannel] = useState<ChannelTab>('whatsapp');
@@ -41,6 +87,20 @@ export default function InboxLayout({ phones }: { phones: PhoneDetails[] }) {
 
   // Global chat metadata: { [phone_number_id]: { [chat_id]: ChatMeta } }
   const [allChats, setAllChats] = useState<Record<string, Record<string, ChatMeta>>>({});
+
+  // Hydrate from localStorage on mount — conversation history persists per browser/user.
+  useEffect(() => {
+    const stored = loadStoredInbox(userId);
+    setAllMessages(stored.allMessages);
+    setAllChats(stored.allChats);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- run once on mount
+  }, []);
+
+  // Persist to localStorage whenever messages or chats change.
+  useEffect(() => {
+    if (Object.keys(allMessages).length === 0 && Object.keys(allChats).length === 0) return;
+    saveStoredInbox(userId, allMessages, allChats);
+  }, [userId, allMessages, allChats]);
   // Unread tracking: { [phone_number_id]: Set<chat_id> }
   // A chat is unread if an incoming message arrived while it was not the active view.
   const [unreadChats, setUnreadChats] = useState<Record<string, Set<string>>>({});
@@ -1066,9 +1126,6 @@ export default function InboxLayout({ phones }: { phones: PhoneDetails[] }) {
                       </div>
                       <h3 className="text-sm font-semibold text-gray-700 mb-1">No Messages Yet</h3>
                       <p className="text-xs text-gray-400 max-w-xs">Messages appear here in real-time via webhooks.</p>
-                      <p className="text-[11px] text-gray-300 mt-1">
-                        Conversation history is not persisted — refreshing the page will clear messages.
-                      </p>
                     </div>
                   )}
                 </div>
